@@ -2,6 +2,7 @@
 import { checkWinner, renderBoard } from './functions.js';
 
 $(document).ready(function () {
+  const bootstrap_grid = 12;
   const X = 'X';
   const O = 'O';
   let size = 3;
@@ -36,19 +37,35 @@ $(document).ready(function () {
   $('#size').change(function () {
     const newSize = Number($(this).val());
     const newSpan = `span${newSize}`;
+    const isInc = newSize > size;
+
+    const container = $('#tic-tac-toe');
+    const title = $('#tic-tac-toe-title');
+    const input = $('#tic-tac-toe-input');
 
     //12 is bootstrap span grid
-    if (newSize <= 12) {
-      $('#tic-tac-toe-title').removeClass(span).addClass(newSpan);
-      $('#tic-tac-toe-input').removeClass(span).addClass(newSpan);
-      $('#tic-tac-toe').width($('.' + newSpan).width() + newSize * 2);
+    if (isInc) {
+      if (newSize <= bootstrap_grid) {
+        title.removeClass(span).addClass(newSpan);
+        input.removeClass(span).addClass(newSpan);
+        container.width($('.' + newSpan).width() + newSize * 2);
+      } else {
+        container.width('100%');
+        $('.row').addClass('row-fluid').removeClass('row');
+      }
     } else {
-      $('#tic-tac-toe').width('100%');
-      $('.row').addClass('row-fluid').removeClass('row');
+      if (newSize >= bootstrap_grid) {
+        $('.row-fluid').addClass('row').removeClass('row-fluid');
+      } else {
+        title.removeClass(span).addClass(newSpan);
+        input.removeClass(span).addClass(newSpan);
+        container.width($('.' + newSpan).width() + newSize * 2);
+      }
     }
 
-    $('#game').css('grid-template-columns', `repeat(${newSize}, 1fr)`);
-    $('#game').css('grid-template-rows', `repeat(${newSize}, 1fr)`);
+    $('#game')
+      .css('grid-template-columns', `repeat(${newSize}, 1fr)`)
+      .css('grid-template-rows', `repeat(${newSize}, 1fr)`);
 
     size = newSize;
     span = newSpan;
