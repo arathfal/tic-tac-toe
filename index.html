@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tic Tac Toe game</title>
+
+    <link
+      rel="stylesheet prefetch"
+      href="https://getbootstrap.com/2.3.2/assets/css/bootstrap.css"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <main id="tic-tac-toe">
+      <div class="row">
+        <h1 id="tic-tac-toe-title" class="span3">Tic Tac Toe</h1>
+        <div id="tic-tac-toe-input" class="span3">
+          <select id="size">
+            <option value="3">Size: 3 x 3</option>
+            <option value="4">Size: 4 x 4</option>
+            <option value="5">Size: 5 x 5</option>
+            <option value="6">Size: 6 x 6</option>
+            <option value="7">Size: 7 x 7</option>
+            <option value="8">Size: 8 x 8</option>
+            <option value="9">Size: 9 x 9</option>
+            <option value="10">Size: 10 x 10</option>
+            <option value="11">Size: 11 x 11</option>
+            <option value="12">Size: 12 x 12</option>
+          </select>
+          <div class="input-prepend input-append">
+            <span class="add-on win_text">O won</span>
+            <strong id="o_win" class="win_times add-on">0</strong>
+            <span class="add-on">time(s)</span>
+          </div>
+          <div class="input-prepend input-append">
+            <span class="add-on win_text">X won</span>
+            <strong id="x_win" class="win_times add-on">0</strong>
+            <span class="add-on">time(s)</span>
+          </div>
+        </div>
+      </div>
+      <ul class="row" id="game"></ul>
+      <div class="clr">&nbsp;</div>
+      <div id="tic-tac-toe-input">
+        <a href="#" id="reset" class="btn-success btn">Restart</a>
+      </div>
+    </main>
+    <script src="https://code.jquery.com/jquery-1.7.2.min.js"></script>
+
+    <script type="module" src="js/index.js"></script>
+  </body>
+</html>
