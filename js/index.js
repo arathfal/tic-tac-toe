@@ -14,7 +14,7 @@ $(document).ready(function () {
   function renderButton(length = 9) {
     const contents = [];
     for (let i = 1; i <= length; i++) {
-      contents.push(`<li id="button${i}" data-button="${i}" class="btn span1">+</li>`);
+      contents.push(`<li id="button${i}" data-button="${i}" class="btn">+</li>`);
     }
     $('#game').html(contents.join(''));
   }
@@ -36,9 +36,19 @@ $(document).ready(function () {
   $('#size').change(function () {
     const newSize = Number($(this).val());
     const newSpan = `span${newSize}`;
-    $('#tic-tac-toe-title').removeClass(span).addClass(newSpan);
-    $('#tic-tac-toe-input').removeClass(span).addClass(newSpan);
-    $('#tic-tac-toe').width($('.' + newSpan).width() + newSize * 2);
+
+    //12 is bootstrap span grid
+    if (newSize <= 12) {
+      $('#tic-tac-toe-title').removeClass(span).addClass(newSpan);
+      $('#tic-tac-toe-input').removeClass(span).addClass(newSpan);
+      $('#tic-tac-toe').width($('.' + newSpan).width() + newSize * 2);
+    } else {
+      $('#tic-tac-toe').width('100%');
+      $('.row').addClass('row-fluid').removeClass('row');
+    }
+
+    $('#game').css('grid-template-columns', `repeat(${newSize}, 1fr)`);
+    $('#game').css('grid-template-rows', `repeat(${newSize}, 1fr)`);
 
     size = newSize;
     span = newSpan;

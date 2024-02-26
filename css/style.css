@@ -12,9 +12,9 @@
   text-align: center;
   margin-bottom: 20px;
   color: #fff;
-  height: 60px;
+  max-height: 60px;
   line-height: 60px;
-  font-size: 40px;
+  font-size: 2.5rem;
   color: #ccc;
 }
 
@@ -23,9 +23,12 @@
 }
 
 #tic-tac-toe #game {
-  float: left;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 10px;
+  margin: 0 auto;
   padding: 0;
-  clear: both;
 }
 
 .new_span {
@@ -95,6 +98,10 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+}
+
+#size {
+  margin-bottom: 1rem;
 }
 
 /*******tic-tac-toe END******/
