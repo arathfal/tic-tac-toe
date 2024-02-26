@@ -1,3 +1,4 @@
+// function to render row board, ex: 123, 456, etc.
 export function rowMatrix(size) {
   const result = [];
   for (let i = 0; i < size; i++) {
@@ -10,6 +11,7 @@ export function rowMatrix(size) {
   return result;
 }
 
+// function to render column board, ex: 147, 258, etc.
 export function columnMatrix(size) {
   const result = [];
   for (let i = 1; i <= size; i++) {
@@ -22,6 +24,7 @@ export function columnMatrix(size) {
   return result;
 }
 
+// function to render diagonal board, ex: 159 and 357.
 export function diagonalMatrix(size) {
   const diagonal1 = [];
   const diagonal2 = [];
@@ -32,6 +35,7 @@ export function diagonalMatrix(size) {
   return [diagonal1, diagonal2];
 }
 
+//function to render fulll board.
 export function renderMatrix(size) {
   const rows = rowMatrix(size);
   const columns = columnMatrix(size);
@@ -40,6 +44,7 @@ export function renderMatrix(size) {
   return [...rows, ...columns, ...diagonals];
 }
 
+// function to render a Tic Tac Toe board based on button text
 export function renderBoard(elements) {
   const result = [];
   elements.each(function () {
@@ -49,6 +54,7 @@ export function renderBoard(elements) {
   return result;
 }
 
+// function to check the winner.
 export function checkWinner(size, board) {
   const conditions = renderMatrix(size);
   for (let condition of conditions) {

@@ -10,6 +10,7 @@ $(document).ready(function () {
   let x_win = 0;
   let span = `span${size}`;
 
+  //funtion to render button with dynamic length .
   function renderButton(length = 9) {
     const contents = [];
     for (let i = 1; i <= length; i++) {
@@ -18,7 +19,8 @@ $(document).ready(function () {
     $('#game').html(contents.join(''));
   }
 
-  function resetGame(message) {
+  //funtion to reset the board.
+  function resetBoard(message) {
     $('#game li').text('+').removeClass('disable o x btn-primary btn-info');
     count = 0;
     if (message) {
@@ -29,14 +31,13 @@ $(document).ready(function () {
   //initial render
   renderButton();
 
-  $('#reset').click(() => resetGame());
+  $('#reset').click(() => resetBoard());
 
   $('#size').change(function () {
     const newSize = Number($(this).val());
     const newSpan = `span${newSize}`;
     $('#tic-tac-toe-title').removeClass(span).addClass(newSpan);
     $('#tic-tac-toe-input').removeClass(span).addClass(newSpan);
-    // $('#reset').parent().removeClass(span).addClass(newSpan);
     $('#tic-tac-toe').width($('.' + newSpan).width() + newSize * 2);
 
     size = newSize;
@@ -76,9 +77,9 @@ $(document).ready(function () {
           }
         }
       } else if (count === length) {
-        resetGame('Its a tie. It will restart.');
+        resetBoard('Its a tie. It will restart.');
       } else {
-        resetGame(`${winner_1} has won the game. Start a new game`);
+        resetBoard(`${winner_1} has won the game. Start a new game`);
       }
     });
   });
